@@ -41,4 +41,12 @@ public class PlaceItems : MonoBehaviour
 
     }
 
+    private void OnMouseOver()
+    {
+        if (Input.GetMouseButtonUp(1))
+        {
+            Destroy(gameObject);
+        }
+    }
+
 }
