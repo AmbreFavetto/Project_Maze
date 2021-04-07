@@ -24,7 +24,7 @@ public class PlaceItems : MonoBehaviour
         Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 roundPoint = new Vector2((int)point.x + 0.5f, (int)point.y + 0.5f);
         transform.position = roundPoint;
-
+        /*
         if (transform.position.x > 11)
         {
             transform.position = Vector2.right * 10;
@@ -38,6 +38,7 @@ public class PlaceItems : MonoBehaviour
         {
             transform.position = Vector2.up * -6;
         }
+        */
 
     }
 
