@@ -7500,8 +7500,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93abf5a90e855dd46aa5e008ec722b24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 205
   rb: {fileID: 1034375191}
+  animator: {fileID: 1034375190}
+  slime: {fileID: 1034375193}
 --- !u!58 &1034375196
 CircleCollider2D:
   m_ObjectHideFlags: 0
