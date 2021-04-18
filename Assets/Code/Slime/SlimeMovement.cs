@@ -6,17 +6,12 @@ public class SlimeMovement : MonoBehaviour
 
     public float moveSpeed;
     public Rigidbody2D rb;
-    private Vector3 velocity = Vector3.zero;
+    Vector2 dir;
 
     void FixedUpdate()
     {
-        float horizontalMovement = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
-        MoveSlime(horizontalMovement);
-    }
-
-    void MoveSlime(float _horizontalMovement)
-    {
-        Vector3 targetVelocity = new Vector2(_horizontalMovement, rb.velocity.y);
-        rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, .05f);
+        dir.x = Input.GetAxisRaw("Horizontal");
+        dir.y = Input.GetAxisRaw("Vertical");
+        rb.MovePosition(rb.position + dir * moveSpeed * Time.fixedDeltaTime);
     }
 }

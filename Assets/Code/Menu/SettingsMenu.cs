@@ -3,9 +3,11 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class SettingsMenu : MonoBehaviour
 {
+
     public AudioMixer audioMixer;
     public Dropdown resolutionDropdown;
     Resolution[] resolutions;
@@ -48,4 +50,10 @@ public class SettingsMenu : MonoBehaviour
     {
         Screen.fullScreen = isFullScreen;
     }
+
+    public void returnMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
 }

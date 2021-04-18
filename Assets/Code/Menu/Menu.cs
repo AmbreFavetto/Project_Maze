@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class Menu : MonoBehaviour
 {
     public GameObject settingsWindow;
 
-    public void EditWaze()
+
+    public void EditMaze()
     {
         SceneManager.LoadScene("MazeEditor");
     }
 
-    public void LaunchWaze()
+    public void LaunchMaze()
     {
         SceneManager.LoadScene("MazeEditor");
     }
