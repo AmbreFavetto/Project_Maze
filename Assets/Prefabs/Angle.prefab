@@ -243,8 +243,8 @@ MonoBehaviour:
   - {fileID: 1747092739311399472}
   - {fileID: 1747092739381999360}
   - {fileID: 1747092740158210847}
-  isStair: 0
   pieces: {fileID: 0}
+  SpawnPoint: {fileID: 0}
   canPlaceStairD: 1
   canPlaceStairU: 1
 --- !u!1 &1747092740158210847

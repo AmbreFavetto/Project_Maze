@@ -325,8 +325,8 @@ MonoBehaviour:
   - {fileID: 5516117854449799453}
   - {fileID: 5516117854792170417}
   - {fileID: 5516117854419537319}
-  isStair: 0
   pieces: {fileID: 0}
+  SpawnPoint: {fileID: 0}
   canPlaceStairD: 1
   canPlaceStairU: 1
 --- !u!1 &5516117856083672230

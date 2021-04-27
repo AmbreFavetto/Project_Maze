@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class SlimeMovement : MonoBehaviour
 {
-
-    public float moveSpeed;
+    public float moveSpeed = 205;
 
     public Rigidbody2D rb;
     
@@ -13,12 +12,10 @@ public class SlimeMovement : MonoBehaviour
 
     private Vector3 velocity = Vector3.zero;
 
-   
-
     void FixedUpdate()
     {
-        float horizontalMovement = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
-        float verticalMovement = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
+        float horizontalMovement = Input.GetAxis("Horizontal") * moveSpeed * Time.fixedDeltaTime;
+        float verticalMovement = Input.GetAxis("Vertical") * moveSpeed * Time.fixedDeltaTime;
 
         MovePlayerHorizontal(horizontalMovement);
         MovePlayerVertical(verticalMovement);

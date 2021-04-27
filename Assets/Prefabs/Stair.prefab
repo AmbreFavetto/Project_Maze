@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1698011218854151853}
   - component: {fileID: 1698011218854151852}
-  - component: {fileID: 2151717067663026077}
+  - component: {fileID: 8554233135274461661}
   m_Layer: 0
   m_Name: Escalier_up
   m_TagString: end
@@ -83,32 +83,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &2151717067663026077
-BoxCollider2D:
+--- !u!114 &8554233135274461661
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1698011218854151854}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b0d6a4d5e689d44a801823415788a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  victoryWindow: {fileID: 0}
 --- !u!1 &1698011219415694126
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,7 +106,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1698011219415694125}
   - component: {fileID: 1698011219415694124}
-  - component: {fileID: 5492623511726042161}
   m_Layer: 0
   m_Name: Escalier_down
   m_TagString: start
@@ -192,32 +178,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5492623511726042161
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1698011219415694126}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!1 &1698011219456507622
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,7 +253,7 @@ MonoBehaviour:
   elts:
   - {fileID: 1698011219415694126}
   - {fileID: 1698011218854151854}
-  isStair: 1
   pieces: {fileID: 0}
+  SpawnPoint: {fileID: 8374072301430563986, guid: 81a7a03b29b635047ab4251a4f7691f8, type: 3}
   canPlaceStairD: 1
   canPlaceStairU: 1

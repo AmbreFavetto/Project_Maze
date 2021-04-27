@@ -9,6 +9,9 @@ TagManager:
   - Trap
   - Start
   - End
+  - Button
+  - StartInstance
+  - EndInstance
   layers:
   - Default
   - TransparentFX

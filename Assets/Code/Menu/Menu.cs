@@ -21,11 +21,13 @@ public class Menu : MonoBehaviour
     public void Settings()
     {
         settingsWindow.SetActive(true);
+        Time.timeScale = 0.0f;        
     }
 
     public void CloseSettings()
     {
         settingsWindow.SetActive(false);
+        Time.timeScale = 1.0f;
     }
 
     public void Quit()

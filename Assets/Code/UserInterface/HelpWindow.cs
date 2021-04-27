@@ -10,11 +10,13 @@ public class HelpWindow : MonoBehaviour
     public void ShowHelpWindow()
     {
         helpWindow.SetActive(true);
+        Time.timeScale = 0.0f;
     }
 
     public void CloseHelpWindow()
     {
         helpWindow.SetActive(false);
+        Time.timeScale = 1.0f;
     }
     public void SwitchHelpWindowRight()
     {
