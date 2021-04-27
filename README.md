@@ -1,11 +1,11 @@
 # Project_Maze
 
-#titre -- Présentation --
+## -- Présentation --
 
 Ce projet est un jeu vidéo de type “Labyrinthe”. L’utilisateur va créer des niveaux, et voir
 comment l’IA du jeu s’en sort dessus. Il contient 3 composantes : deux IHM et une BDD
 
-#titre -- Fonctionnalités --
+## -- Fonctionnalités --
 
 • modèle de données : Difficulté : 3
   o des types d’obstacles, avec pour chacun :
