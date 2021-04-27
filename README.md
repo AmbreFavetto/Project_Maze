@@ -7,7 +7,8 @@ comment l’IA du jeu s’en sort dessus. Il contient 3 composantes : deux IHM e
 
 ## -- Fonctionnalités --
 
-• __modèle de données :__ *Difficulté : 3* 
+• __modèle de données :__ *Difficulté : 3*   
+
   o des types d’obstacles, avec pour chacun :  
     ▪ s'ils sont traversables ou non  
     ▪ leur effet sur l’IA si on les traverse  
@@ -25,6 +26,7 @@ comment l’IA du jeu s’en sort dessus. Il contient 3 composantes : deux IHM e
     ▪ une référence au niveau  
     ▪ une date de passage  
     ▪ un résultat  
+    
 • pour les __types d’obstacle__, avoir au minimum :  
   o point de départ  
   o point d’arrivé  
@@ -33,6 +35,7 @@ comment l’IA du jeu s’en sort dessus. Il contient 3 composantes : deux IHM e
   o boue (ralenti l’IA)  
   
 • le lien avec la BDD doit se faire via un __ORM__ *Difficulté : 4*  
+
 • __Logiciel de test de l’IA__ :  
   • l’utilisateur choisi un niveau crée *Difficulté : 2*  
   • l’IA apparait sur l’élément Point de Départ *Difficulté : 1*  
@@ -46,5 +49,6 @@ comment l’IA du jeu s’en sort dessus. Il contient 3 composantes : deux IHM e
   *Difficulté : 2*  
   • l’utilisateur doit pouvoir placer, déplacer, supprimer des obstacles sur une map
   de jeu 2D *Difficulté : 5*  
+  
   
 *Degré de difficulté total : 28 points*
