@@ -1,48 +1,54 @@
 # Project_Maze
 
--- Présentation --
+## -- Présentation --
 
-Ce projet contient 3 composantes : une API, une IHM et une BDD. Le but est de créer une IHM
-de type CRUD qui s’adaptera à tout modèle de données.
-Fonctionnalités
+__Ce projet est un jeu vidéo de type “Labyrinthe”. L’utilisateur va créer des niveaux, et voir
+comment l’IA du jeu s’en sort dessus. Il contient 3 composantes : deux IHM et une BDD__
 
-  • modèle de données (vous modifierez ce modèle de vous-même afin de tester la partie
-  adaptative) : Difficulté : 2
-  o des clients, composés de :
-    ▪ un nom, un prénom
-    ▪ une adresse mail
-    ▪ une date de création
-  o des factures, composés de :
-    ▪ une référence à un client
-    ▪ une date d’émission
-    ▪ une donnée indiquant si elle a été payé ou non
-    ▪ une date de paiement
-    ▪ un prix
-    ▪ des références à des produits
-  o des produits, composés de :
-    ▪ un nom
-    ▪ un stock
-    ▪ une photo
-    ▪ un prix
-    ▪ des références à des factures
+## -- Fonctionnalités --
 
-• L’API REST :
-  o doit faire le lien avec la BDD via un ORM (l’ORM peut même créer la BDD)
-  Difficulté : 4
-  o doit fournir des routes HTTP pour toutes les actions CRUD de toutes les tables
-  du modèle de données Difficulté : 5
-  o doit fournir (en une route HTTP ou plusieurs) toutes les informations relatives
-  à la composition du modèle de données (comme un MCD mais en JSON)
-  Difficulté : 3
+• __modèle de données :__ *Difficulté : 3*   
 
-• L’IHM :
-  o doit fournir des pages pour toutes les actions CRUD de toutes les tables du
-  modèle de données (Ex : par table, une page liste / suppression et une page
-  ajout / modification) Difficulté : 3
-  o l’IHM doit utiliser la même page pour une action CRUD, quel que soit la table.
-  La page devra se construire toute seule en fonction des informations de
-  composition du modèle fournis par l’API Difficulté : 6
-  o pour ce faire, il faudra créer des composants génériques pour chaque type de
-  champ Difficulté : 6
+  o des types d’obstacles, avec pour chacun :  
+    ▪ s'ils sont traversables ou non  
+    ▪ leur effet sur l’IA si on les traverse  
+    ▪ leur nom  
+    ▪ leur apparence  
+    ▪ le nombre minimum contenu dans un niveau  
+    ▪ le nombre maximum dans un niveau  
+  o des niveaux, avec pour chacun :  
+    ▪ un nom  
+    ▪ un créateur  
+    ▪ une date de création  
+    ▪ une date de modification  
+    ▪ une composition  
+  o des tests de niveau, avec pour chacun :  
+    ▪ une référence au niveau  
+    ▪ une date de passage  
+    ▪ un résultat  
+    
+• pour les __types d’obstacle__, avoir au minimum :  
+  o point de départ  
+  o point d’arrivé  
+  o mur  
+  o piège (met en échec l’IA)  
+  o boue (ralenti l’IA)  
   
-Degré de difficulté total : 29 points
+• le lien avec la BDD doit se faire via un __ORM__ *Difficulté : 4*  
+
+• __Logiciel de test de l’IA__ :  
+  • l’utilisateur choisi un niveau crée *Difficulté : 2*  
+  • l’IA apparait sur l’élément Point de Départ *Difficulté : 1*  
+  • l’IA tente d’atteindre le Point d’arrivé, à l’aide d’un algorithme au choix (Ex :
+  machine learning ou pathfinding A*) *Difficulté : 8*  
+  • le résultat du test est entré en BDD *Difficulté : 1*  
+  
+• __Logiciel d’édition de niveau__ :  
+  • l’utilisateur doit pouvoir créer ou éditer un niveau existant *Difficulté : 2*  
+  • une boite à outils permettant de choisir parmi tous les types d’obstacle
+  *Difficulté : 2*  
+  • l’utilisateur doit pouvoir placer, déplacer, supprimer des obstacles sur une map
+  de jeu 2D *Difficulté : 5*  
+  
+  
+*Degré de difficulté total : 28 points*
