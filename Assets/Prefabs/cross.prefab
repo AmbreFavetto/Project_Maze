@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3751989542942024339}
   - component: {fileID: 3751989542942024338}
   - component: {fileID: 3751989542942024337}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: cross
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,8 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elts:
   - {fileID: 3751989543271056642}
-  isStair: 0
   pieces: {fileID: 0}
+  SpawnPoint: {fileID: 0}
   canPlaceStairD: 1
   canPlaceStairU: 1
 --- !u!61 &3751989542942024337
@@ -139,7 +139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3751989543271056641}
   - component: {fileID: 3751989543271056640}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: cross
   m_TagString: Untagged
   m_Icon: {fileID: 0}

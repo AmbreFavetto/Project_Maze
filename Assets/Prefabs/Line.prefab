@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1191488368162165800}
   - component: {fileID: 1191488368162165802}
   - component: {fileID: 1191488368162165803}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,8 +75,8 @@ MonoBehaviour:
   elts:
   - {fileID: 1191488368299537451}
   - {fileID: 1191488369128325847}
-  isStair: 0
   pieces: {fileID: 0}
+  SpawnPoint: {fileID: 0}
   canPlaceStairD: 1
   canPlaceStairU: 1
 --- !u!1 &1191488368299537451
@@ -89,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1191488368299537450}
   - component: {fileID: 1191488368299537453}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ligne_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1191488369128325846}
   - component: {fileID: 1191488369128325833}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ligne_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
