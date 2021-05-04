@@ -26,6 +26,6 @@ public class VerifyAndSaveMaze : MonoBehaviour
 
     public void SaveMaze()
     {
-
+        AstarPath.active.Scan();
     }
 }
