@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class EndWindow : MonoBehaviour
 {
@@ -8,13 +9,15 @@ public class EndWindow : MonoBehaviour
     public VerifyAndSaveMaze verifyAndSaveMaze;
     public Animator animator;
 
-    private GameObject spawnPoint;
-    private GameObject slime;
+    private GameObject startInstance;
+    private GameObject slimeInstance;
+    private GameObject AISlimeInstance;
 
     private void Awake()
     {
-        spawnPoint = verifyAndSaveMaze.spawnPoint;
-        slime = verifyAndSaveMaze.slime;
+        startInstance = verifyAndSaveMaze.startInstance;
+        slimeInstance = verifyAndSaveMaze.slime;
+        AISlimeInstance = verifyAndSaveMaze.AISlime;
         
     }
 
@@ -22,8 +25,12 @@ public class EndWindow : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         animator.SetBool("isTrigger", false);
-        endWindow.SetActive(false);
-        slime.transform.position = spawnPoint.transform.position;
-        slime.transform.GetComponent<SlimeMovement>().moveSpeed = 205;
+        endWindow.SetActive(false);  
+
+        /*slimeInstance.transform.position = startInstance.transform.position;
+        slimeInstance.transform.GetComponent<SlimeMovement>().moveSpeed = 205;*/
+
+        AISlimeInstance.transform.position = startInstance.transform.position;
+        AISlimeInstance.transform.GetComponent<AIPath>().maxSpeed = 2;
     }
 }

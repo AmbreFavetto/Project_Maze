@@ -16,8 +16,6 @@ public class triggerTrap : MonoBehaviour
             collision.transform.GetComponent<SlimeMovement>().moveSpeed = 0;
             animator.SetBool("isTrigger", true);
             StartCoroutine(waitAnimation());
-            //defeatWindow.SetActive(true);
-            //collision.transform.GetComponent<SlimeMovement>().moveSpeed = speed;
         }
     }
 

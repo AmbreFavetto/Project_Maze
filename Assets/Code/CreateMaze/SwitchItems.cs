@@ -62,6 +62,8 @@ public class SwitchItems : MonoBehaviour
                 newPiece.transform.parent = pieces.transform;
                 // Add the script PlaceItems to the new piece to move and delete it
                 newPiece.AddComponent<PlaceItems>();
+                // The tag EndInstance is useful for the AISlime
+                newPiece.tag = "EndInstance";
                 // Add a reference to SwitchItems to set canPlaceStairU to true on the delete of the piece
                 PlaceItems myComponent = newPiece.GetComponent<PlaceItems>();
                 myComponent.switchItems = GetComponentInParent<SwitchItems>();

@@ -5,7 +5,7 @@ using UnityEngine;
 public class triggerVictory : MonoBehaviour
 {
     public GameObject victoryWindow;
-    
+    public GameObject AISlime;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,6 +13,12 @@ public class triggerVictory : MonoBehaviour
         {
             Time.timeScale = 0.0f;
             victoryWindow.SetActive(true);
+        } else if (collision.CompareTag("AI"))
+        {
+            Time.timeScale = 0.0f;
+            //victoryWindow.SetActive(true);
+            //DestroyImmediate(AISlime, true);
+            print("on peut save!");
         }
     }
 }

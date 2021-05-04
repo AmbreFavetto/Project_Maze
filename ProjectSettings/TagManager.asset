@@ -14,6 +14,7 @@ TagManager:
   - EndInstance
   - end
   - start
+  - AI
   layers:
   - Default
   - TransparentFX

@@ -6,9 +6,11 @@ public class VerifyAndSaveMaze : MonoBehaviour
 {
     public SwitchItems switchItems;
     public GameObject slime;
-    public GameObject spawnPoint;
+    public GameObject AISlime;
 
-    private GameObject startInstance;
+    public GameObject startInstance;
+    private GameObject endInstance;
+
     // TODO : enlever canPlaceSlime et juste empêcher le clic sur le bouton
     private bool canPlaceSlime = true;
 
@@ -17,15 +19,28 @@ public class VerifyAndSaveMaze : MonoBehaviour
         if (switchItems.canPlaceStairD == false && switchItems.canPlaceStairU == false && canPlaceSlime)
         {
             startInstance = GameObject.FindGameObjectWithTag("StartInstance");
-            spawnPoint.transform.position = startInstance.transform.position;
-            slime.transform.position = spawnPoint.transform.position;
-            slime = Instantiate(slime);          
-            canPlaceSlime = false;
+            slime.transform.position = startInstance.transform.position;
+            slime = Instantiate(slime);       
+            
+            canPlaceSlime = false; // TODO CHANGER
         }
     }
 
     public void SaveMaze()
-    {
-        AstarPath.active.Scan();
+    {        
+
+        if (switchItems.canPlaceStairD == false && switchItems.canPlaceStairU == false && canPlaceSlime)
+        {
+            AstarPath.active.Scan();
+
+            startInstance = GameObject.FindGameObjectWithTag("StartInstance");
+            endInstance = GameObject.FindGameObjectWithTag("EndInstance");
+
+            AISlime.transform.position = startInstance.transform.position;
+            AISlime = Instantiate(AISlime);
+            AISlime.transform.GetComponent<Pathfinding.AIDestinationSetter>().target = endInstance.transform;
+
+            canPlaceSlime = false; // TODO CHANGER
+        }
     }
 }

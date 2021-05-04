@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class triggerSludge : MonoBehaviour
 {
@@ -12,6 +13,10 @@ public class triggerSludge : MonoBehaviour
         {
             SlimeMovement slimeMovement = collision.transform.GetComponent<SlimeMovement>();
             slimeMovement.moveSpeed = slimeMovement.moveSpeed / speedDecrease;
+        } else if(collision.transform.CompareTag("AI"))
+        {
+            AIPath AIMovement = collision.transform.GetComponent<AIPath>();
+            AIMovement.maxSpeed = AIMovement.maxSpeed / speedDecrease;
         }
     }
 
@@ -21,6 +26,10 @@ public class triggerSludge : MonoBehaviour
         {
             SlimeMovement slimeMovement = collision.transform.GetComponent<SlimeMovement>();
             slimeMovement.moveSpeed = slimeMovement.moveSpeed * speedDecrease;
+        } else if(collision.transform.CompareTag("AI"))
+        {
+            AIPath AIMovement = collision.transform.GetComponent<AIPath>();
+            AIMovement.maxSpeed = AIMovement.maxSpeed * speedDecrease;
         }
     }
 }
