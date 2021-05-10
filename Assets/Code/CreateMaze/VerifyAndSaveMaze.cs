@@ -20,9 +20,11 @@ public class VerifyAndSaveMaze : MonoBehaviour
         {
             startInstance = GameObject.FindGameObjectWithTag("StartInstance");
             slime.transform.position = startInstance.transform.position;
-            slime = Instantiate(slime);       
-            
-            canPlaceSlime = false; // TODO CHANGER
+            slime = Instantiate(slime);
+
+            //TODO faire disparaitre les boutons SAVE et TEST
+            //     faire apparaitre un bouton MODIFIER
+            canPlaceSlime = false; // TODO Supprimer
         }
     }
 
@@ -40,7 +42,15 @@ public class VerifyAndSaveMaze : MonoBehaviour
             AISlime = Instantiate(AISlime);
             AISlime.transform.GetComponent<Pathfinding.AIDestinationSetter>().target = endInstance.transform;
 
-            canPlaceSlime = false; // TODO CHANGER
+            //TODO faire disparaitre les boutons SAVE et TEST
+            canPlaceSlime = false; // TODO Supprimer
+
+            // TODO si IA arrive 
+            //              Faire apparaitre une fenetre "sauvegarde effectuée"
+            //      sinon 
+            //              Faire apparaitre une fenetre "error"
+
+
         }
     }
 }
