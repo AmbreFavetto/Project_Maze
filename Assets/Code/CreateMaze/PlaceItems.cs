@@ -60,7 +60,6 @@ public class PlaceItems : MonoBehaviour
             }
             // destroy the selected item
             Destroy(gameObject);
-            
         }
     }
 }

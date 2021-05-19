@@ -86,6 +86,9 @@ public class SwitchItems : MonoBehaviour
                 // set the trigger to true to be able to interact with the sludge (slow down the slime when it passes over)
                 myCollider = newPiece.GetComponent<BoxCollider2D>();
                 myCollider.isTrigger = true;
+            } else if(!isSludge && !isTrap)
+            {
+                newPiece.tag = "Obstacle";
             }
         }
    

@@ -5,32 +5,32 @@ using Pathfinding;
 
 public class EndWindow : MonoBehaviour
 {
+    // Defeat or victory window
     public GameObject endWindow;
+    // To get a reference to startInstance (up stairs) and slimeInstance (player)
     public VerifyAndSaveMaze verifyAndSaveMaze;
+    // The trap animation
     public Animator animator;
 
     private GameObject startInstance;
     private GameObject slimeInstance;
-    private GameObject AISlimeInstance;
 
     private void Awake()
     {
-        startInstance = verifyAndSaveMaze.startInstance;
-        slimeInstance = verifyAndSaveMaze.slime;
-        AISlimeInstance = verifyAndSaveMaze.AISlime;
-        
+        startInstance = verifyAndSaveMaze.startInstance;        
     }
 
     public void Retry()
     {
+        // Remove the pause from the game
         Time.timeScale = 1.0f;
+        // To stop the animation
         animator.SetBool("isTrigger", false);
-        endWindow.SetActive(false);  
+        endWindow.SetActive(false);
 
-        /*slimeInstance.transform.position = startInstance.transform.position;
-        slimeInstance.transform.GetComponent<SlimeMovement>().moveSpeed = 205;*/
-
-        AISlimeInstance.transform.position = startInstance.transform.position;
-        AISlimeInstance.transform.GetComponent<AIPath>().maxSpeed = 2;
+        // To get the new slime instance
+        slimeInstance = verifyAndSaveMaze.slimeInstance;
+        slimeInstance.transform.position = startInstance.transform.position;
+        slimeInstance.transform.GetComponent<SlimeMovement>().moveSpeed = 205;
     }
 }

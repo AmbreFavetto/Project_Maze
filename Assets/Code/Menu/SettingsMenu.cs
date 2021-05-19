@@ -65,6 +65,7 @@ public class SettingsMenu : MonoBehaviour
     public void returnMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+        // Remove the pause from the game
         Time.timeScale = 1.0f;
     }
 

@@ -12,11 +12,6 @@ public class triggerVictory : MonoBehaviour
         {
             Time.timeScale = 0.0f;
             victoryWindow.SetActive(true);
-        } else if (collision.CompareTag("AI"))
-        {
-            Time.timeScale = 0.0f;
-            collision.GetComponent<AIController>().DestroyAI();
-            print("on peut save!");
-        }
+        } 
     }
 }
