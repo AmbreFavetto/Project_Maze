@@ -12,20 +12,18 @@ public class triggerTrap : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            // To pause the game
-            Time.timeScale = 0.0f;
             collision.transform.GetComponent<SlimeMovement>().moveSpeed = 0;
             // To play the animation
-            animator.SetBool("isTrigger", true);
+            animator.SetTrigger("activeTrap");
             StartCoroutine(waitAnimation());
-            defeatWindow.SetActive(true);
         }
     }
 
     public IEnumerator waitAnimation()
     {
         // TODO : corriger problème animation qui se joue après que la fenêtre s'affiche
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1f);
+        defeatWindow.SetActive(true);
     }
 
 }

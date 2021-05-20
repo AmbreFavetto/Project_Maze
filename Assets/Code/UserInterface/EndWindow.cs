@@ -22,10 +22,6 @@ public class EndWindow : MonoBehaviour
 
     public void Retry()
     {
-        // Remove the pause from the game
-        Time.timeScale = 1.0f;
-        // To stop the animation
-        animator.SetBool("isTrigger", false);
         endWindow.SetActive(false);
 
         // To get the new slime instance

@@ -16,6 +16,21 @@ TagManager:
   - start
   - AI
   - Obstacle
+  - Angle1
+  - Angle2
+  - Angle3
+  - Angle4
+  - Line1
+  - Line2
+  - Bit1
+  - Bit2
+  - Bit3
+  - Bit4
+  - Cross
+  - T1
+  - T2
+  - T3
+  - T4
   layers:
   - Default
   - TransparentFX

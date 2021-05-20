@@ -6,7 +6,7 @@ public class AIPathfinding
 {
     private const int MOVE_STRAIGHT_COST = 10;
     private const int MOVE_DIAGONAL_COST = 14;
-    private const int MOVE_SLUDGE = 16;
+    private const int MOVE_SLUDGE_COST = 16;
 
     private MazeGrid<AIPathNode> grid;
     private List<AIPathNode> openList;
@@ -84,6 +84,7 @@ public class AIPathfinding
             foreach(AIPathNode neighbourNode in GetNeighbourList(currentNode))
             {
                 if (closedList.Contains(neighbourNode)) continue;
+                //Debug.Log("x : " + neighbourNode.x + " y : " + neighbourNode.y + " " + neighbourNode.isWalkable);
                 if(!neighbourNode.isWalkable)
                 {
                     closedList.Add(neighbourNode);
@@ -112,22 +113,30 @@ public class AIPathfinding
     {
         List<AIPathNode> neighbourList = new List<AIPathNode>();
 
-        if(currentNode.x - 1 >= 0)
+        if (currentNode.x - 1 >= 1)
         {
+            Debug.Log(currentNode.y);
+            Debug.Log(grid.GetHeight());
+            // Left
             neighbourList.Add(GetNode(currentNode.x - 1, currentNode.y));
-
-            if (currentNode.y - 1 >= 0) neighbourList.Add(GetNode(currentNode.x - 1, currentNode.y - 1));
+            // Left Down
+            if (currentNode.y - 1 >= 1) neighbourList.Add(GetNode(currentNode.x - 1, currentNode.y - 1));
+            // Left UP
             if (currentNode.y + 1 < grid.GetHeight()) neighbourList.Add(GetNode(currentNode.x - 1, currentNode.y + 1));
         }
         if (currentNode.x + 1 < grid.GetWidth())
         {
+            // Right
             neighbourList.Add(GetNode(currentNode.x + 1, currentNode.y));
-
-            if (currentNode.y - 1 >= 0) neighbourList.Add(GetNode(currentNode.x + 1, currentNode.y - 1));
+            // Right Down
+            if (currentNode.y - 1 >= 1) neighbourList.Add(GetNode(currentNode.x + 1, currentNode.y - 1));
+            // Right Up
             if (currentNode.y + 1 < grid.GetHeight()) neighbourList.Add(GetNode(currentNode.x + 1, currentNode.y + 1));
         }
-        if (currentNode.y - 1 >= 0) neighbourList.Add(GetNode(currentNode.x, currentNode.y - 1));
-        if (currentNode.y - 1 < grid.GetHeight()) neighbourList.Add(GetNode(currentNode.x, currentNode.y + 1));
+        // Down
+        if (currentNode.y - 1 >= 1) neighbourList.Add(GetNode(currentNode.x, currentNode.y - 1));
+        // Up
+        if (currentNode.y + 1 < grid.GetHeight()) neighbourList.Add(GetNode(currentNode.x, currentNode.y + 1));
 
         return neighbourList;
     }
