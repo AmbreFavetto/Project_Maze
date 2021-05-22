@@ -18,7 +18,7 @@ class CreateLevelsTable extends Migration
             $table->string('name');
             $table->string('creator');            
             $table->timestamps();
-            $table->string('maze_data');
+            $table->json('maze_data');
         });
     }
 
