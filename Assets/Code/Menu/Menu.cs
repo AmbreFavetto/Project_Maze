@@ -15,7 +15,7 @@ public class Menu : MonoBehaviour
 
     public void LaunchMaze()
     {
-        SceneManager.LoadScene("MazeEditor");
+        SceneManager.LoadScene("MazeTester");
     }
 
     public void Settings()

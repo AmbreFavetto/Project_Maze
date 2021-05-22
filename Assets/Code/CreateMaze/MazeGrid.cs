@@ -17,6 +17,9 @@ public class MazeGrid<TGridObject>
 
     public MazeGrid(int _width, int _height, float _cellSize, Vector3 _originPosition, Func<MazeGrid<TGridObject>, int, int, TGridObject> createGridObject)
     {
+        // Singleton
+        MazeGrid<AIPathNode> _mazeGrid = Singleton._instance.mazeGrid;
+
         this.width = _width;
         this.height = _height;
         this.cellSize = _cellSize;

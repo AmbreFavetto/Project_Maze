@@ -1,13 +1,14 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VerifyAndSaveMaze : MonoBehaviour
 {
     // To get the instances of the down and up stairs
     public SwitchItems switchItems;
 
+    // To test the maze before save it
     public GameObject slime;
     public GameObject slimeInstance;
 
@@ -17,14 +18,23 @@ public class VerifyAndSaveMaze : MonoBehaviour
     public GameObject btnTest;
     public GameObject btnSave;
     public GameObject btnModify;
+    public GameObject btnLoad;
 
     public SaveLoadMaze saveLoadMaze;
 
+    public GameObject infosWindow;
+    public GameObject saveWindow;
+    public GameObject errorWindow;
+    public GameObject missingInfosWindow;
+
+    public InputField inputNickname;
+    public InputField inputInfosMaze;
+
     private AIPathfinding pathfinding;
 
-    public enum typeOfObject {Angle1, Angle2, Angle3, Angle4, Line1, Line2, Bit1, Bit2, Bit3, Bit4, Cross, T1, T2, T3, T4, Start, End, Sludge, Trap};
-    public string[] nameOfObject = { "Angle1", "Angle2", "Angle3", "Angle4", "Line1", "Line2", "Bit1", "Bit2", "Bit3", "Bit4", "Cross", "T1", "T2", "T3", "T4", "Start", "End", "Sludge", "Trap" };
-    public string[] nameOfObstacle = { "Angle1", "Angle2", "Angle3", "Angle4", "Line1", "Line2", "Bit1", "Bit2", "Bit3", "Bit4", "Cross", "T1", "T2", "T3", "T4" };
+    public enum typeOfObject {Angle1 = 1, Angle2 = 2, Angle3 = 3, Angle4 = 4, Line1 = 5, Line2 = 6, Bit1 = 7, Bit2 = 8, Bit3 = 9, Bit4 = 10, Cross = 11, T1 = 12, T2 = 13, T3 = 14, T4 = 15, StartInstance = 16, EndInstance = 17, Sludge = 18, Trap = 19};
+    public readonly string[] nameOfObject = { "Angle1", "Angle2", "Angle3", "Angle4", "Line1", "Line2", "Bit1", "Bit2", "Bit3", "Bit4", "Cross", "T1", "T2", "T3", "T4", "StartInstance", "EndInstance", "Sludge", "Trap" };
+    public readonly string[] nameOfObstacle = { "Angle1", "Angle2", "Angle3", "Angle4", "Line1", "Line2", "Bit1", "Bit2", "Bit3", "Bit4", "Cross", "T1", "T2", "T3", "T4" };
     
     [Serializable]
     public class ItemToSave {
@@ -47,12 +57,19 @@ public class VerifyAndSaveMaze : MonoBehaviour
             HideButtons();
             btnModify.SetActive(true);
 
-            //switchItems.enabled = false;
-            //placeItems.enabled = false;
-            
             startInstance = GameObject.FindGameObjectWithTag("StartInstance");
             slime.transform.position = startInstance.transform.position;
             slimeInstance = Instantiate(slime);
+        }
+    }
+
+    public void ShowInfosWindow()
+    {
+        // To prevent testing or saving if there is not at least one start and one finish
+        if (switchItems.canPlaceStairD == false && switchItems.canPlaceStairU == false)
+        {
+            HideButtons();
+            infosWindow.SetActive(true);
         }
     }
 
@@ -60,29 +77,30 @@ public class VerifyAndSaveMaze : MonoBehaviour
     {
         pathfinding = new AIPathfinding(18, 11);
         int i = 0;
-        // To prevent testing or saving if there is not at least one start and one finish
-        if (switchItems.canPlaceStairD == false && switchItems.canPlaceStairU == false)
+        string Json = "";
+
+        if (inputNickname.text != "" && inputInfosMaze.text != "")
         {
-            HideButtons();
+            infosWindow.SetActive(false);
 
             startInstance = GameObject.FindGameObjectWithTag("StartInstance");
-            endInstance = GameObject.FindGameObjectWithTag("EndInstance");          
+            endInstance = GameObject.FindGameObjectWithTag("EndInstance");
 
             foreach (string myObject in nameOfObject) {
                 foreach (GameObject newObject in GameObject.FindGameObjectsWithTag(myObject)) {
                     if (newObject.transform.position.x > -10)
                     {
                         i = 0;
-                        ItemToSave shrek = new ItemToSave();
+                        ItemToSave tmp = new ItemToSave();
                         foreach(string type in nameOfObject) {
                             if(type == myObject)
                             {
-                                shrek.type = GetType(i);
+                                tmp.type = (typeOfObject)i;
                             }
                             i++;
                         }
-                        shrek.pos = newObject.transform.position;                      
-                        items.Add(shrek);
+                        tmp.pos = newObject.transform.position;                      
+                        items.Add(tmp);
                     }
                 }
             }
@@ -106,44 +124,57 @@ public class VerifyAndSaveMaze : MonoBehaviour
                 grid.GetGridObject((int)(obstacle.transform.position.x + 9), (int)(obstacle.transform.position.y + 7)).SetIsWalkable(false);
             }
 
-
-
-            List<AIPathNode> path = pathfinding.FindPath((int)startInstance.transform.position.x + 9, (int)startInstance.transform.position.y + 7, (int)endInstance.transform.position.x + 9, (int)endInstance.transform.position.y + 7);
+            List<AIPathNode> path = pathfinding.FindPath((int)startInstance.transform.position.x + 9, 
+                                                        (int)startInstance.transform.position.y + 7, 
+                                                        (int)endInstance.transform.position.x + 9, 
+                                                        (int)endInstance.transform.position.y + 7);
 
             if (path != null)
             {
-                // TODO : Chargement en BD
-                Debug.Log("OK!");
-                for (i = 0; i < path.Count - 1; i++)
-                {
-                    Debug.Log(path[i].x + " " + path[i].y);
-                    Debug.DrawLine(new Vector3(path[i].x - 9, path[i].y - 7), new Vector3(path[i + 1].x - 9, path[i + 1].y - 7), Color.green, 2.5f, false);
-                    
-                }
-                foreach(ItemToSave item in items)
-                {
-                    Debug.Log(item.type + " " + item.pos);
-                }
-                string Json = JsonUtility.ToJson(items, true);
+                saveWindow.SetActive(true);
 
-                Debug.Log(Json);
-                StartCoroutine(saveLoadMaze.save("coucou", "la mif", Json));
+                bool debug = true;
+
+                if(debug)
+                {
+                    for (i = 0; i < path.Count - 1; i++)
+                    {
+                        Debug.DrawLine(new Vector3(path[i].x - 9, path[i].y - 7), new Vector3(path[i + 1].x - 9, path[i + 1].y - 7), Color.green, 2.5f, false);                   
+                    }
+                }
+
+                i = 0;
+                foreach (ItemToSave item in items)
+                {                        
+                    if (i == 0)
+                    {
+                        Json = "[" + JsonUtility.ToJson(item);
+                    }
+                    else if (i == items.Count - 1)
+                    {
+                        Json = Json + "," + JsonUtility.ToJson(item) + "]";
+                    } else
+                    {
+                        Json = Json + "," + JsonUtility.ToJson(item);
+                    }
+                    i++;
+                }
+
+                StartCoroutine(saveLoadMaze.Save(inputInfosMaze.text, inputNickname.text, Json));
+                items.Clear();
+                ShowButtons();
+
             } else
             {
-                // TODO : Affichage de la fenêtre indiquant qu'il y a une erreur
-                Debug.Log("NULL!");
+                errorWindow.SetActive(true);
+                ShowButtons();
             }
-
-            /*AISlime.transform.position = startInstance.transform.position;
-
-            
-            AISlime = Instantiate(AISlime);
-            AISlime.GetComponent<AIController>().SetTargetPosition(endInstance.transform.position);
-            */
-
-            
-
+        } else
+        {
+            missingInfosWindow.SetActive(true);
         }
+           
+
     }
 
     public void ModifyMaze()
@@ -161,51 +192,10 @@ public class VerifyAndSaveMaze : MonoBehaviour
         btnTest.SetActive(false);
     }
 
-    private typeOfObject GetType(int i)
+    private void ShowButtons()
     {
-        Debug.Log("LA " +i);
-        switch(i)
-        {
-            case 0:
-                return typeOfObject.Angle1;
-            case 1:
-                return typeOfObject.Angle2;
-            case 2:
-                return typeOfObject.Angle3;
-            case 3:
-                return typeOfObject.Angle4;
-            case 4:
-                return typeOfObject.Line1;
-            case 5:
-                return typeOfObject.Line2;
-            case 6:
-                return typeOfObject.Bit1;
-            case 7:
-                return typeOfObject.Bit2;
-            case 8:
-                return typeOfObject.Bit3;
-            case 9:
-                return typeOfObject.Bit4;
-            case 10:
-                return typeOfObject.Cross;
-            case 11:
-                return typeOfObject.T1;
-            case 12:
-                return typeOfObject.T2;
-            case 13:
-                return typeOfObject.T3;
-            case 14:
-                return typeOfObject.T4;
-            case 15:
-                return typeOfObject.Start;
-            case 16:
-                return typeOfObject.End;
-            case 17:
-                return typeOfObject.Sludge;
-            case 18:
-                return typeOfObject.Trap;
-            default:
-                return typeOfObject.Angle1;
-        }
+        btnSave.SetActive(true);
+        btnTest.SetActive(true);
     }
+
 }

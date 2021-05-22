@@ -84,7 +84,6 @@ public class AIPathfinding
             foreach(AIPathNode neighbourNode in GetNeighbourList(currentNode))
             {
                 if (closedList.Contains(neighbourNode)) continue;
-                //Debug.Log("x : " + neighbourNode.x + " y : " + neighbourNode.y + " " + neighbourNode.isWalkable);
                 if(!neighbourNode.isWalkable)
                 {
                     closedList.Add(neighbourNode);
@@ -115,8 +114,6 @@ public class AIPathfinding
 
         if (currentNode.x - 1 >= 1)
         {
-            Debug.Log(currentNode.y);
-            Debug.Log(grid.GetHeight());
             // Left
             neighbourList.Add(GetNode(currentNode.x - 1, currentNode.y));
             // Left Down
