@@ -52,3 +52,5 @@ comment l’IA du jeu s’en sort dessus. Il contient 3 composantes : deux IHM e
   
   
 *Degré de difficulté total : 28 points*
+
+__Pour plus d'infos sur l'avancée du projet cf. Maze_Builder_Document__
